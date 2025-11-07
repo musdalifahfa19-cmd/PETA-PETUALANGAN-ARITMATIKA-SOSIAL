@@ -1,47 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Peta Petualangan Aritmatika Sosial</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>POS 2 — Trio Timbangan Ajaib</title>
 
-  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lottie-web@latest/build/player/lottie.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div id="game-container">
-    <h1 class="game-title">🎯 Peta Petualangan Aritmatika Sosial</h1>
+  <div class="wrap">
 
-    <div id="intro" class="scene">
-      <p>Selamat datang di Petualangan Aritmatika! 🌟</p>
-      <button id="startButton">Mulai Petualangan</button>
-    </div>
+    <!-- HEADER -->
+    <header class="topbar">
+      <div class="title">⚖️ Trio Timbangan Ajaib — Pos 2</div>
+      <div class="energy">
+        <div class="energy-label">Energi Timbangan</div>
+        <div class="energy-bar"><div id="energyFill"></div></div>
+      </div>
+    </header>
 
-    <div id="questionScene" class="scene hidden">
-      <h2 id="questionText"></h2>
-      <div id="options"></div>
-    </div>
+    <!-- START SCREEN -->
+    <main id="startScreen" class="screen active">
+      <section class="card startCard">
+        <div class="intro-anim">
+          <div class="scale-emoji">⚖️</div>
+        </div>
 
-    <div id="resultScene" class="scene hidden">
-      <h2 id="resultText"></h2>
-      <button id="nextButton">Lanjut</button>
-    </div>
+        <h1>Selamat datang, Peneliti Timbangan!</h1>
+        <p class="lead">Tuan Takaran menantimu. Jawab soal tentang <b>Bruto, Netto, dan Tara</b> untuk mendapatkan energi timbangan.</p>
 
-    <div id="endScene" class="scene hidden">
-      <h2>🎉 Petualangan Selesai!</h2>
-      <p id="finalScore"></p>
-      <button id="restartButton">Main Lagi</button>
-    </div>
+        <label for="playerName">Masukkan nama kamu:</label>
+        <input id="playerName" placeholder="Contoh: Dinda / Kelompok 8" />
+
+        <div class="start-actions">
+          <button id="btnStart" class="btn primary">🎮 Mulai Petualangan</button>
+          <button id="btnHow" class="btn secondary">❓ Cara Bermain</button>
+        </div>
+
+        <p class="hint">TIP: Pilih jawaban lalu tekan <b>Cek Jawaban</b>. Jawaban benar memberi energi & animasi!</p>
+      </section>
+    </main>
+
+    <!-- QUIZ SCREEN -->
+    <section id="quizScreen" class="screen hidden">
+      <section class="card quizCard">
+        <div class="meta">
+          <div id="levelLabel" class="levelLabel">Level: Mudah</div>
+          <div id="progressLabel" class="progressLabel">Soal 1 / 3</div>
+        </div>
+
+        <div id="questionCard" class="questionCard">
+          <h2 id="questionTitle">Pertanyaan</h2>
+          <p id="questionText" class="questionText"></p>
+
+          <div id="choices" class="choices"></div>
+
+          <div class="controls-row">
+            <button id="btnCheck" class="btn check">📝 Cek Jawaban</button>
+            <div id="feedback" class="feedback" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button id="prevBtn" class="btn secondary">⬅️ Sebelumnya</button>
+          <button id="nextBtn" class="btn secondary">➡️ Lanjut</button>
+        </div>
+      </section>
+    </section>
+
+    <!-- RESULT SCREEN -->
+    <section id="resultScreen" class="screen hidden">
+      <section class="card resultCard">
+        <h2>🎉 Selamat!</h2>
+        <p id="resultText">Kamu telah menyelesaikan Pos 2!</p>
+        <div id="finalScore" class="finalScore"></div>
+        <div class="result-actions">
+          <button id="btnRetry" class="btn primary">🔁 Ulangi Pos 2</button>
+          <button id="btnBack" class="btn secondary">🏠 Kembali ke Peta</button>
+        </div>
+      </section>
+    </section>
+
   </div>
 
-  <!-- 🔊 Bagian Audio — SUDAH DIBENERIN -->
+  <!-- AUDIO (tanpa folder) -->
   <audio id="bgMusic" loop preload="auto" src="happy-kids-background-music.mp3"></audio>
   <audio id="clickSound" src="click.mp3"></audio>
   <audio id="correctSound" src="correct.mp3"></audio>
   <audio id="wrongSound" src="wrong.mp3"></audio>
-  <audio id="getcoinSound" src="get-coin.mp3"></audio>
+  <audio id="getcoinSound" src="getcoin.mp3"></audio>
+
+  <button id="musicToggle" class="music-btn" title="Matikan / Nyalakan Musik">🔇</button>
 
   <script src="script.js"></script>
 </body>
